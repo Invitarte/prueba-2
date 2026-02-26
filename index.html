@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ángel & Saraí</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --azul:#0c1a2b;
+  --gold:#e6b7b2;
+}
+
+body{
+  margin:0;
+  background:var(--azul);
+  color:var(--gold);
+  font-family:'Playfair Display', serif;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* ---------------- SOBRE ---------------- */
+.sobre{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  perspective:1000px;
+}
+
+.tarjeta{
+  width:90%;
+  max-width:380px;
+  padding:40px 25px;
+  border:1px solid var(--gold);
+  position:relative;
+  z-index:2;
+  background:var(--azul);
+}
+
+.tapa{
+  position:absolute;
+  width:100%;
+  height:50%;
+  top:0;
+  background:var(--azul);
+  border-bottom:1px solid var(--gold);
+  transform-origin:top;
+  transition:1.2s ease;
+  z-index:3;
+}
+
+.abrir .tapa{
+  transform:rotateX(180deg);
+}
+
+/* ---------------- PORTADA ---------------- */
+h1{
+  font-family:'Great Vibes', cursive;
+  font-size:60px;
+  margin:10px 0;
+}
+
+.frase{
+  margin-top:20px;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.cal-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px;
+  margin-top:10px;
+  font-size:14px;
+}
+
+.evento{
+  position:relative;
+  font-weight:bold;
+}
+
+.evento::after{
+  content:"❤️";
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  font-size:14px;
+}
+
+.btn{
+  margin-top:25px;
+  padding:12px 28px;
+  border:1px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  border-radius:30px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:var(--gold);
+  color:var(--azul);
+}
+
+/* ---------------- INTERIOR ---------------- */
+.interior{
+  display:none;
+  padding:40px 20px;
+  animation:fade 1.5s forwards;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.titulo-boda{
+  font-family:'Great Vibes', cursive;
+  font-size:50px;
+}
+
+#contador{
+  margin:20px 0;
+  font-size:20px;
+}
+
+.ubicaciones{
+  display:flex;
+  justify-content:space-around;
+  flex-wrap:wrap;
+  margin:30px 0;
+}
+
+.ubicaciones div{
+  margin:10px;
+}
+
+.slider{
+  max-width:350px;
+  margin:30px auto;
+  position:relative;
+}
+
+.slider img{
+  width:100%;
+  border-radius:10px;
+  display:none;
+}
+
+.slider img.activa{
+  display:block;
+}
+
+.botones-final{
+  margin-top:30px;
+}
+
+@media(max-width:600px){
+  h1{font-size:48px;}
+  .titulo-boda{font-size:42px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SOBRE -->
+<div class="sobre" id="sobre">
+  <div class="tapa"></div>
+
+  <div class="tarjeta">
+    <h1>A & S</h1>
+
+    <strong>Mayo 2026</strong>
+    <div class="cal-grid">
+      <div>L</div><div>M</div><div>M</div><div>J</div><div>V</div><div>S</div><div>D</div>
+      <div></div><div></div><div></div><div></div><div>1</div><div>2</div><div>3</div>
+      <div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div>
+      <div>11</div><div>12</div><div>13</div><div>14</div><div>15</div>
+      <div class="evento">16</div>
+      <div>17</div>
+    </div>
+
+    <div class="frase">
+      El amor es la razón de este día,<br>
+      y tu presencia lo hará aún más especial.
+    </div>
+
+    <button class="btn" onclick="abrir()">Abrir invitación</button>
+  </div>
+</div>
+
+<!-- INTERIOR -->
+<div class="interior" id="interior">
+
+  <div class="titulo-boda">Nuestra boda</div>
+  <div style="font-size:24px;">Ángel & Saraí</div>
+
+  <div id="contador"></div>
+
+  <div class="frase">
+    El amor es la razón de este día, y tu presencia lo hará aún más especial.
+    <br><br>
+    Con la bendición de Dios,<br>
+    queremos compartir este día contigo.
+  </div>
+
+  <div class="ubicaciones">
+    <div>
+      <strong>Religioso</strong><br>
+      <a href="#" class="btn">Ver ubicación</a>
+    </div>
+    <div>
+      <strong>Social</strong><br>
+      <a href="#" class="btn">Ver ubicación</a>
+    </div>
+  </div>
+
+  <div class="slider">
+    <img src="foto1.jpg" class="activa">
+    <img src="foto2.jpg">
+    <img src="foto3.jpg">
+  </div>
+
+  <div class="botones-final">
+    <a href="https://forms.gle/TU_ENLACE_AQUI" target="_blank" class="btn">
+      Confirmar asistencia
+    </a>
+
+    <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Boda+Ángel+y+Saraí&dates=20260516T193000/20260516T235900&details=Nos+casamos&location=Evento+Social"
+       target="_blank" class="btn">
+      Agregar a calendario
+    </a>
+  </div>
+
+</div>
+
+<script>
+function abrir(){
+  document.getElementById("sobre").classList.add("abrir");
+  setTimeout(()=>{
+    document.getElementById("sobre").style.display="none";
+    document.getElementById("interior").style.display="block";
+  },1200);
+}
+
+/* CONTADOR */
+const fechaEvento = new Date("May 16, 2026 19:30:00").getTime();
+setInterval(()=>{
+  const ahora = new Date().getTime();
+  const dif = fechaEvento - ahora;
+  if(dif<=0){
+    contador.innerHTML="¡Hoy es el gran día! 💍";
+    return;
+  }
+  const d=Math.floor(dif/(1000*60*60*24));
+  const h=Math.floor((dif%(1000*60*60*24))/(1000*60*60));
+  const m=Math.floor((dif%(1000*60*60))/(1000*60));
+  const s=Math.floor((dif%(1000*60))/1000);
+  contador.innerHTML=`${d} días · ${h} hrs · ${m} min · ${s} seg`;
+},1000);
+
+/* SLIDER SIMPLE */
+let index=0;
+const imgs=document.querySelectorAll(".slider img");
+setInterval(()=>{
+  imgs[index].classList.remove("activa");
+  index=(index+1)%imgs.length;
+  imgs[index].classList.add("activa");
+},3000);
+</script>
+
+</body>
+</html>
